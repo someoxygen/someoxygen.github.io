@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
+import ThemeToggle from './ThemeToggle';
 
 const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -28,16 +29,19 @@ const Navbar: React.FC = () => {
           <span className="brand-text">Mustafa Yücel</span>
         </Link>
         
-        <button
-          className="navbar-toggler border-0"
-          type="button"
-          aria-controls="navbarNav"
-          aria-expanded={isMenuOpen}
-          aria-label="Toggle navigation"
-          onClick={() => setIsMenuOpen((isOpen) => !isOpen)}
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button>
+        <div className="d-flex align-items-center gap-2 order-lg-3">
+          <ThemeToggle />
+          <button
+            className="navbar-toggler border-0"
+            type="button"
+            aria-controls="navbarNav"
+            aria-expanded={isMenuOpen}
+            aria-label="Toggle navigation"
+            onClick={() => setIsMenuOpen((isOpen) => !isOpen)}
+          >
+            <span className="navbar-toggler-icon"></span>
+          </button>
+        </div>
 
         <div className={`collapse navbar-collapse ${isMenuOpen ? 'show' : ''}`} id="navbarNav">
           <ul className="navbar-nav ms-auto">

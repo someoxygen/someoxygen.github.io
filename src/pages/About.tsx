@@ -15,11 +15,11 @@ const About: React.FC = () => {
               </h1>
               <p className="lead mb-4 opacity-90">
                 5 yıllık endüstri deneyimine sahip, yaratıcı ve çözüm odaklı bir Full Stack Developer'ım. 
-                C#, Node.js, Angular, React ve modern web teknolojileri ile kullanıcı deneyimini ön planda 
+                C#, Node.js, Angular, React, Vue ve modern web teknolojileri ile kullanıcı deneyimini ön planda
                 tutan projeler geliştiriyorum.
               </p>
               <div className="d-flex gap-3 flex-wrap">
-                <Link to="/resume" className="btn btn-light btn-lg rounded-pill px-4">
+                <Link to="/resume" className="btn btn-primary btn-lg rounded-pill px-4">
                   CV'mi Görüntüle
                 </Link>
               </div>
@@ -51,7 +51,7 @@ const About: React.FC = () => {
                         Teknolojiler
                       </h4>
                       <p className="card-text">
-                        C#, Node.js, Angular, React, HTML, CSS, JavaScript, TypeScript, .NET Core, 
+                        C#, Node.js, Angular, React, Vue, HTML, CSS, JavaScript, TypeScript, .NET Core,
                         MSSQL, PostgreSQL, MongoDB gibi teknolojilerde yetkinlik kazandım. REST/SOAP 
                         entegrasyonları ve web servis geliştirme konularında deneyimliyim.
                       </p>
@@ -94,7 +94,7 @@ const About: React.FC = () => {
                   </div>
                   <h5 className="card-title">Frontend</h5>
                   <p className="card-text text-muted">
-                    HTML, CSS, Tailwind CSS, Bootstrap, Angular, React, JavaScript, TypeScript
+                    HTML, CSS, Tailwind CSS, Bootstrap, Angular, React, Vue, JavaScript, TypeScript
                   </p>
                 </div>
               </div>
