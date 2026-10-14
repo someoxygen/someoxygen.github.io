@@ -27,25 +27,18 @@ const Footer: React.FC = () => {
   ];
 
   return (
-    <footer className="bg-dark text-light position-relative overflow-hidden">
-      {/* Gradient Overlay */}
-      <div className="position-absolute top-0 start-0 w-100 h-100 opacity-10"
-           style={{
-             background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)'
-           }}>
-      </div>
-      
+    <footer className="position-relative overflow-hidden">
       <div className="container position-relative">
         <div className="row py-5">
           {/* Brand Section */}
           <div className="col-lg-4 mb-4 mb-lg-0">
             <div className="animate-fade-in-up">
               <h4 className="fw-bold mb-3">
-                <span className="text-white">Mustafa Yücel</span>
+                <span>Mustafa Yücel</span>
               </h4>
               <p className="text-muted mb-4">
                 5 yıllık endüstri deneyimine sahip, yaratıcı ve çözüm odaklı bir Full Stack Developer'ım. 
-                C#, Node.js, Angular, React ve modern web teknolojileri ile projeler geliştiriyorum.
+                C#, Node.js, Angular, React, Vue ve modern web teknolojileri ile projeler geliştiriyorum.
               </p>
               <div className="d-flex gap-3">
                 {socialLinks.map((social, index) => (
@@ -122,7 +115,7 @@ const Footer: React.FC = () => {
               <div className="mb-3">
                 <p className="text-muted mb-1">
                   <FaPhone className="me-2" />
-                  0534 661 49 92
+                  +90 534 661 49 92
                 </p>
               </div>
               <div className="mb-3">

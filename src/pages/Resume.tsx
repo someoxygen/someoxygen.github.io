@@ -22,7 +22,7 @@ interface Project {
 
 const Resume: React.FC = () => {
   const skills = {
-    frontend: ['HTML', 'CSS', 'Tailwind CSS', 'Bootstrap', 'Angular', 'React', 'JavaScript', 'TypeScript'],
+    frontend: ['HTML', 'CSS', 'Tailwind CSS', 'Bootstrap', 'Angular', 'React', 'Vue', 'JavaScript', 'TypeScript'],
     backend: ['C#', '.NET', '.NET Core', '.NET MVC', 'Node.js', 'Web API', 'REST API', 'SOAP API'],
     database: ['MSSQL', 'PostgreSQL', 'MongoDB', 'Redis', 'Entity Framework', 'EF Core', 'LINQ', 'ADO.NET'],
     tools: ['Git', 'GitHub', 'GitLab', 'Azure DevOps', 'RabbitMQ', 'Kafka', 'JIRA', 'Agile', 'OOP', 'SOLID', 'gRPC']
@@ -57,7 +57,7 @@ const Resume: React.FC = () => {
       period: 'Nisan 2021–Nisan 2025',
       description:
         'BiletBank BBFaring, PavoPay ve OverEgov projelerinde frontend, backend, web servis ve entegrasyon geliştirmeleri. 20 farklı özel entegratörlük uygulaması ve GİB entegrasyonları.',
-      technologies: ['Angular', 'React', 'C#', '.NET', 'REST API', 'SOAP API']
+      technologies: ['Angular', 'React', 'Vue', 'C#', '.NET', 'REST API', 'SOAP API']
     },
     {
       title: 'IT Helpdesk Uzmanı',
@@ -194,7 +194,7 @@ const Resume: React.FC = () => {
               <h1 className="display-4 fw-bold mb-4">Özgeçmiş</h1>
               <p className="lead mb-5 opacity-90">
                 5 yıllık endüstri deneyimine sahip, yaratıcı ve çözüm odaklı bir Full Stack Developer'ım.
-                C#, Node.js, Angular, React ve modern web teknolojileri ile kullanıcı deneyimini ön planda
+                C#, Node.js, Angular, React, Vue ve modern web teknolojileri ile kullanıcı deneyimini ön planda
                 tutan projeler geliştiriyorum.
               </p>
             </div>
