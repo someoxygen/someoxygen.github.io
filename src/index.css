@@ -1,8 +1,5 @@
 /* Modern Portfolio CSS - Enhanced Design */
 
-/* Google Fonts Import */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&display=swap');
-
 /* CSS Variables for consistent theming */
 :root {
   color-scheme: light;
@@ -834,7 +831,7 @@ html { scroll-behavior: smooth; scroll-padding-top: 100px; }
 .experience-section .home-section-heading { margin-bottom: 0; }
 .experience-section .card { border-radius: 12px; }
 .experience-section .card-title { font-family: 'Inter', sans-serif; font-size: 1.1rem; }
-.experience-section h6 { font-family: 'Inter', sans-serif; font-size: 0.8rem; line-height: 1.7; }
+.experience-section .h6 { font-family: 'Inter', sans-serif; font-size: 0.8rem; line-height: 1.7; }
 .experience-section ul { padding-left: 18px; font-size: 0.85rem; line-height: 1.9; margin-bottom: 0; }
 [data-bs-theme='dark'] .btn { border-radius: 8px !important; }
 [data-bs-theme='dark'] .navbar-brand { font-family: 'Inter', sans-serif; letter-spacing: -0.05em; }
@@ -890,22 +887,22 @@ html { scroll-behavior: smooth; scroll-padding-top: 100px; }
 .resume-content .card { border-radius: 14px; }
 .resume-content .card:hover { transform: none; box-shadow: var(--shadow-md); }
 .resume-content .card::before { display: none; }
-.resume-content h3 { font-family: 'Inter', sans-serif; font-size: 1.25rem; letter-spacing: -0.035em; }
+.resume-content h2 { font-family: 'Inter', sans-serif; font-size: 1.25rem; letter-spacing: -0.035em; }
 .resume-content .card-body { padding: 28px !important; }
 .resume-content .fa-2x { font-size: 1.45rem; }
 .resume-entry-heading { display: flex; align-items: start; justify-content: space-between; flex-wrap: wrap; gap: 8px 16px; margin-bottom: 10px; }
-.resume-entry-heading h5 { font-family: 'Inter', sans-serif; font-size: 1.02rem; line-height: 1.5; }
+.resume-entry-heading h3 { font-family: 'Inter', sans-serif; font-size: 1.02rem; line-height: 1.5; }
 .resume-entry-heading .badge { flex-shrink: 0; font-size: 0.7rem; padding: 7px 10px; }
 .resume-education .resume-entry-heading { flex-direction: column-reverse; gap: 14px; }
-.resume-education h6 { font-size: 0.9rem; line-height: 1.5; }
+.resume-education .h6 { font-size: 0.9rem; line-height: 1.5; }
 .resume-education p { font-size: 0.85rem; line-height: 1.8; }
 .resume-certifications .row { --bs-gutter-y: 20px; }
-.resume-certifications h6 { font-family: 'Inter', sans-serif; font-size: 0.83rem; font-weight: 500 !important; line-height: 1.65; }
+.resume-certifications .h6 { font-family: 'Inter', sans-serif; font-size: 0.83rem; font-weight: 500 !important; line-height: 1.65; }
 .resume-certifications .row .text-primary { margin-top: 3px; font-size: 0.85rem; }
 .resume-timeline-item { position: relative; margin-left: 5px; padding: 0 0 30px 25px; border-left: 1px solid var(--border-color); }
 .resume-timeline-item::before { content: ''; position: absolute; left: -5px; top: 8px; width: 9px; height: 9px; border-radius: 50%; background: var(--primary-color); box-shadow: 0 0 0 5px var(--bg-primary); }
 .resume-timeline-item:last-child { padding-bottom: 0; border-left-color: transparent; }
-.resume-timeline-item h6 { font-family: 'Inter', sans-serif; font-size: 0.87rem; line-height: 1.6; }
+.resume-timeline-item .h6 { font-family: 'Inter', sans-serif; font-size: 0.87rem; line-height: 1.6; }
 .resume-timeline-item p { font-size: 0.88rem; line-height: 1.85; }
 .resume-timeline-item .badge.bg-secondary { font-size: 0.7rem; padding: 6px 9px; }
 @media (max-width: 991.98px) {
@@ -934,7 +931,7 @@ main, footer { overflow-wrap: anywhere; }
 .btn svg, .hero-secondary-link svg, .hero-github svg { flex-shrink: 0; }
 .project-actions > .btn { flex: 1 1 8rem; display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 0.625rem 1rem; min-height: 44px; }
 .project-actions > .btn svg { margin: 0 !important; }
-.resume-project-heading > h5 { flex: 1 1 10rem; }
+.resume-project-heading > h3 { flex: 1 1 10rem; }
 .resume-project-heading > .badge { flex: 0 1 auto; }
 .hero-secondary-link, .hero-github { min-height: 44px; }
 .hero-facts { grid-template-columns: repeat(3, minmax(0, 1fr)) minmax(0, 1.2fr); }
@@ -993,3 +990,7 @@ footer .list-unstyled a { display: inline-flex; align-items: center; min-height:
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation: none !important; transition: none !important; }
 }
+
+/* Keyboard users can reach the main content without traversing navigation. */
+.skip-link { position: fixed; top: -100px; left: 1rem; z-index: 2000; padding: .75rem 1rem; background: #fff; color: #090f1c; }
+.skip-link:focus { top: 1rem; }

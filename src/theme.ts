@@ -1,6 +1,7 @@
 export type Theme = 'light' | 'dark';
 
 export function getInitialTheme(): Theme {
+  if (typeof window === 'undefined') return 'light';
   try {
     const saved = window.localStorage.getItem('portfolio-theme');
     if (saved === 'light' || saved === 'dark') return saved;

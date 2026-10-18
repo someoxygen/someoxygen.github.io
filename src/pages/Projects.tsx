@@ -74,7 +74,7 @@ const Projects: React.FC = () => {
                       </span>
                     </div>
 
-                    <h5 className="card-title fw-semibold mb-3">{project.title}</h5>
+                    <h2 className="h5 card-title fw-semibold mb-3">{project.title}</h2>
                     <p className="card-text text-muted flex-grow-1">{project.description}</p>
 
                     <div className="mt-auto">

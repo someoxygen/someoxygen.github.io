@@ -1,10 +1,11 @@
+import { localizedPath } from '../seo/config';
 import { useLanguage } from '../i18n/LanguageContext';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FiArrowUpRight, FiArrowRight, FiCode, FiLayers, FiDatabase, FiGithub } from 'react-icons/fi';
 
 const About: React.FC = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const skillGroups = [
     { icon: <FiCode />, number: '01', title: t("Frontend & Mobil"), description: t("Modern web ve çapraz platform mobil uygulamalar."), technologies: ['React', 'Angular', 'Vue', 'Flutter', 'Dart', 'TypeScript', 'JavaScript', 'HTML5 / CSS3', 'Tailwind CSS', 'Bootstrap'] },
     { icon: <FiLayers />, number: '02', title: t("Backend & Mimari"), description: t("Kurumsal yazılımlar, dağıtık sistemler ve ölçeklenebilir mikroservisler."), technologies: ['C#', 'Java', '.NET 5/6/8/10', 'ASP.NET Core', 'ASP.NET MVC', 'Node.js', 'REST / SOAP', 'gRPC', 'CQRS', 'Clean Architecture', 'SOLID'] },
@@ -23,8 +24,8 @@ const About: React.FC = () => {
               <h1 id="hero-title">{t("Fikirleri koda,")}<br /><span>{t("kodu deneyime.")}</span></h1>
               <p className="hero-description">{t("5+ yıllık deneyimimle kurumsal yazılımlar, dağıtık sistemler, web ve mobil uygulamalar geliştiriyorum. Havayolu, ödeme, e-fatura ve mühendislik otomasyonu alanlarında çözümler üretiyorum.")}</p>
               <div className="hero-actions">
-                <Link to="/projects" className="btn btn-primary">{t("Projelerimi keşfet")} <FiArrowUpRight aria-hidden="true" /></Link>
-                <Link to="/resume" className="hero-secondary-link">{t("CV’mi görüntüle")} <FiArrowRight aria-hidden="true" /></Link>
+                <Link to={localizedPath('/projects', language)} className="btn btn-primary">{t("Projelerimi keşfet")} <FiArrowUpRight aria-hidden="true" /></Link>
+                <Link to={localizedPath('/resume', language)} className="hero-secondary-link">{t("CV’mi görüntüle")} <FiArrowRight aria-hidden="true" /></Link>
               </div>
               <a className="hero-github" href="https://github.com/someoxygen" target="_blank" rel="noopener noreferrer"><FiGithub aria-hidden="true" /> github.com/someoxygen <FiArrowUpRight aria-hidden="true" /></a>
             </div>
@@ -79,17 +80,17 @@ const About: React.FC = () => {
       <section className="experience-section section-light">
         <div className="container">
           <div className="row g-4">
-            <div className="col-12"><div className="home-section-heading"><div><span className="section-eyebrow">{t("02 / DENEYİM")}</span><h2>{t("Üreterek biriken deneyim.")}</h2></div><Link to="/resume" className="hero-secondary-link">{t("Tüm özgeçmiş")} <FiArrowUpRight aria-hidden="true" /></Link></div></div>
+            <div className="col-12"><div className="home-section-heading"><div><span className="section-eyebrow">{t("02 / DENEYİM")}</span><h2>{t("Üreterek biriken deneyim.")}</h2></div><Link to={localizedPath('/resume', language)} className="hero-secondary-link">{t("Tüm özgeçmiş")} <FiArrowUpRight aria-hidden="true" /></Link></div></div>
 
             {/* Çuhadaroğlu Metal A.Ş. */}
             <div className="col-md-6 animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
               <div className="card border-0 shadow-sm h-100">
                 <div className="card-body">
-                  <h5 className="card-title text-primary">
+                  <h3 className="h5 card-title text-primary">
 
                     Çuhadaroğlu Metal A.Ş.
-                  </h5>
-                  <h6 className="text-muted">{t("Full Stack Developer (Nisan 2025 – Haziran 2026)")}</h6>
+                  </h3>
+                  <p className="h6 text-muted">{t("Full Stack Developer (Nisan 2025 – Haziran 2026)")}</p>
                   <ul className="card-text text-muted mt-3">
                     <li>{t(".NET ve Node.js ile kurumsal web uygulamaları geliştirdim; ölçeklenebilir servis odaklı ve mikroservis tabanlı mimariler tasarladım.")}</li>
                     <li>{t("Redis cache ve RabbitMQ mesajlaşma yapılarını uyguladım.")}</li>
@@ -103,11 +104,11 @@ const About: React.FC = () => {
             <div className="col-md-6 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
               <div className="card border-0 shadow-sm h-100">
                 <div className="card-body">
-                  <h5 className="card-title text-primary">
+                  <h3 className="h5 card-title text-primary">
 
                     Overtech Bilgi Teknolojileri
-                  </h5>
-                  <h6 className="text-muted">{t("Full Stack Developer (Nisan 2021 – Nisan 2025)")}</h6>
+                  </h3>
+                  <p className="h6 text-muted">{t("Full Stack Developer (Nisan 2021 – Nisan 2025)")}</p>
                   <ul className="card-text text-muted mt-3">
                     <li>{t("Milyonlarca kullanıcıya hizmet eden havayolu bilet fiyatlandırma, ödeme ve e-fatura çözümleri geliştirdim.")}</li>
                     <li>{t("10+ API ve mikroservisin tasarım, geliştirme ve bakım süreçlerinde görev aldım; RESTful API ve SOAP entegrasyonları geliştirdim.")}</li>

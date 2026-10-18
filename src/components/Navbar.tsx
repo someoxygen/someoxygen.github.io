@@ -1,3 +1,4 @@
+import { localizedPath } from '../seo/config';
 import { useLanguage } from '../i18n/LanguageContext';
 import React, { useState, useEffect } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
@@ -5,7 +6,7 @@ import ThemeToggle from './ThemeToggle';
 import LanguageToggle from './LanguageToggle';
 
 const Navbar: React.FC = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
@@ -48,11 +49,11 @@ const Navbar: React.FC = () => {
       isScrolled ? 'navbar-scrolled' : 'navbar-transparent'
     }`}>
       <div className="container">
-        <Link className="navbar-brand fw-bold d-flex align-items-center" to="/">
+        <Link className="navbar-brand fw-bold d-flex align-items-center" to={localizedPath('/', language)}>
           <img className="brand-mark" src={`${process.env.PUBLIC_URL}/brand-mark.svg?v=my-2`} width="40" height="40" alt="" />
           <span className="brand-text">Mustafa Yücel</span>
         </Link>
-        
+
         <div className="navbar-controls d-flex align-items-center gap-2 order-lg-3">
           <LanguageToggle />
           <ThemeToggle />
@@ -71,9 +72,9 @@ const Navbar: React.FC = () => {
         <div className={`collapse navbar-collapse ${isMenuOpen ? 'show' : ''}`} id="navbarNav">
           <ul className="navbar-nav ms-auto">
             <li className="nav-item">
-              <NavLink 
-                to="/" 
-                className={`nav-link ${location.pathname === '/' ? 'active' : ''}`}
+              <NavLink
+                to={localizedPath('/', language)}
+                className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
                 end
                 onClick={() => setIsMenuOpen(false)}
               >
@@ -81,18 +82,18 @@ const Navbar: React.FC = () => {
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink 
-                to="/projects" 
-                className={`nav-link ${location.pathname === '/projects' ? 'active' : ''}`}
+              <NavLink
+                to={localizedPath('/projects', language)}
+                className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
                 onClick={() => setIsMenuOpen(false)}
               >
                 <span className="nav-link-text">{t("Projelerim")}</span>
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink 
-                to="/resume" 
-                className={`nav-link ${location.pathname === '/resume' ? 'active' : ''}`}
+              <NavLink
+                to={localizedPath('/resume', language)}
+                className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
                 onClick={() => setIsMenuOpen(false)}
               >
                 <span className="nav-link-text">{t("CV")}</span>

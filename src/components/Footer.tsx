@@ -1,10 +1,11 @@
+import { localizedPath } from '../seo/config';
 import { useLanguage } from '../i18n/LanguageContext';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FaGithub, FaLinkedin, FaEnvelope, FaHeart, FaPhone } from 'react-icons/fa';
 
 const Footer: React.FC = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const currentYear = new Date().getFullYear();
   
   const socialLinks = [
@@ -16,7 +17,7 @@ const Footer: React.FC = () => {
     },
     {
       icon: <FaLinkedin />,
-      url: 'http://linkedin.com/in/mstfycl',
+      url: 'https://www.linkedin.com/in/mstfycl/',
       title: 'LinkedIn',
       color: 'hover:text-blue-400'
     },
@@ -64,17 +65,17 @@ const Footer: React.FC = () => {
               <h6 className="fw-bold mb-3">{t("Hızlı Linkler")}</h6>
               <ul className="list-unstyled">
                 <li className="mb-2">
-                  <Link to="/" className="text-muted text-decoration-none hover-text-white">
+                  <Link to={localizedPath('/', language)} className="text-muted text-decoration-none hover-text-white">
                     {t("Hakkımda")}
                   </Link>
                 </li>
                 <li className="mb-2">
-                  <Link to="/projects" className="text-muted text-decoration-none hover-text-white">
+                  <Link to={localizedPath('/projects', language)} className="text-muted text-decoration-none hover-text-white">
                     {t("Projelerim")}
                   </Link>
                 </li>
                 <li className="mb-2">
-                  <Link to="/resume" className="text-muted text-decoration-none hover-text-white">
+                  <Link to={localizedPath('/resume', language)} className="text-muted text-decoration-none hover-text-white">
                     {t("CV")}
                   </Link>
                 </li>

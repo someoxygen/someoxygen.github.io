@@ -101,16 +101,16 @@ const Resume: React.FC = () => {
                       <div className="me-3 text-primary">
                         <FaGraduationCap className="fa-2x" />
                       </div>
-                      <h3 className="fw-bold mb-0">{t("Eğitim")}</h3>
+                      <h2 className="h3 fw-bold mb-0">{t("Eğitim")}</h2>
                     </div>
 
                     {education.map((item, index) => (
                       <div key={index} className="resume-education-item">
                         <div className="resume-entry-heading">
-                          <h5 className="fw-semibold mb-1">{item.degree}</h5>
+                          <h3 className="h5 fw-semibold mb-1">{item.degree}</h3>
                           <span className="badge bg-primary rounded-pill">{item.period}</span>
                         </div>
-                        <h6 className="text-primary mb-2">{item.school}</h6>
+                        <p className="h6 text-primary mb-2">{item.school}</p>
                         <p className="text-muted mb-0">{item.description}</p>
                       </div>
                     ))}
@@ -126,7 +126,7 @@ const Resume: React.FC = () => {
                       <div className="me-3 text-primary">
                         <FaCertificate className="fa-2x" />
                       </div>
-                      <h3 className="fw-bold mb-0">{t("Sertifikalar")}</h3>
+                      <h2 className="h3 fw-bold mb-0">{t("Sertifikalar")}</h2>
                     </div>
 
                     <div className="row g-4">
@@ -137,7 +137,7 @@ const Resume: React.FC = () => {
                               <FaCertificate />
                             </div>
                             <div>
-                              <h6 className="fw-semibold mb-1">{cert.name}</h6>
+                              <h3 className="h6 fw-semibold mb-1">{cert.name}</h3>
                             </div>
                           </div>
                         </div>
@@ -156,16 +156,16 @@ const Resume: React.FC = () => {
                     <div className="me-3 text-primary">
                       <FaBriefcase className="fa-2x" />
                     </div>
-                    <h3 className="fw-bold mb-0">{t("İş Deneyimi")}</h3>
+                    <h2 className="h3 fw-bold mb-0">{t("İş Deneyimi")}</h2>
                   </div>
 
                   {experience.map((item, index) => (
                     <div key={index} className="resume-timeline-item">
                       <div className="resume-entry-heading">
-                        <h5 className="fw-semibold mb-1">{item.title}</h5>
+                        <h3 className="h5 fw-semibold mb-1">{item.title}</h3>
                         <span className="badge bg-primary rounded-pill">{item.period}</span>
                       </div>
-                      <h6 className="text-primary mb-2">{item.company}</h6>
+                      <p className="h6 text-primary mb-2">{item.company}</p>
                       <p className="text-muted mb-2">{item.description}</p>
                       <div className="d-flex flex-wrap gap-1">
                         {item.technologies.map((tech, i) => (
@@ -188,15 +188,15 @@ const Resume: React.FC = () => {
                     <div className="me-3 text-primary">
                       <FaCode className="fa-2x" />
                     </div>
-                    <h3 className="fw-bold mb-0">{t("Teknik Yetenekler")}</h3>
+                    <h2 className="h3 fw-bold mb-0">{t("Teknik Yetenekler")}</h2>
                   </div>
 
                   <div className="row g-4">
                     <div className="col-md-6">
-                      <h5 className="fw-semibold mb-3">
+                      <h3 className="h5 fw-semibold mb-3">
                         <FaCode className="me-2 text-primary" />
                         {t("Frontend & Mobil")}
-                      </h5>
+                      </h3>
                       <div className="d-flex flex-wrap gap-2">
                         {skills.frontend.map((skill, index) => (
                           <span key={index} className="badge bg-primary rounded-pill px-3 py-2">
@@ -207,10 +207,10 @@ const Resume: React.FC = () => {
                     </div>
 
                     <div className="col-md-6">
-                      <h5 className="fw-semibold mb-3">
+                      <h3 className="h5 fw-semibold mb-3">
                         <FaBriefcase className="me-2 text-primary" />
                         Backend
-                      </h5>
+                      </h3>
                       <div className="d-flex flex-wrap gap-2">
                         {skills.backend.map((skill, index) => (
                           <span key={index} className="badge bg-primary rounded-pill px-3 py-2">
@@ -221,10 +221,10 @@ const Resume: React.FC = () => {
                     </div>
 
                     <div className="col-md-6">
-                      <h5 className="fw-semibold mb-3">
+                      <h3 className="h5 fw-semibold mb-3">
                         <FaTools className="me-2 text-primary" />
                         {t("Veritabanı, DevOps & Mimari")}
-                      </h5>
+                      </h3>
                       <div className="d-flex flex-wrap gap-2">
                         {[...skills.database, ...skills.tools].map((skill, index) => (
                           <span key={index} className="badge bg-secondary rounded-pill px-3 py-2">
@@ -235,10 +235,10 @@ const Resume: React.FC = () => {
                     </div>
 
                     <div className="col-md-6">
-                      <h5 className="fw-semibold mb-3">
+                      <h3 className="h5 fw-semibold mb-3">
                         <FaLanguage className="me-2 text-primary" />
                         {t("Diller")}
-                      </h5>
+                      </h3>
                       <div className="d-flex flex-column gap-2">
                         {languages.map((lang, index) => (
                           <div key={index} className="d-flex justify-content-between align-items-center">
@@ -261,7 +261,7 @@ const Resume: React.FC = () => {
                     <div className="me-3 text-primary">
                       <FaCode className="fa-2x" />
                     </div>
-                    <h3 className="fw-bold mb-0">{t("Kişisel Projeler")}</h3>
+                    <h2 className="h3 fw-bold mb-0">{t("Kişisel Projeler")}</h2>
                   </div>
 
                   <div className="row g-4">
@@ -270,7 +270,7 @@ const Resume: React.FC = () => {
                         <div className="card border-0 bg-light h-100">
                           <div className="card-body d-flex flex-column">
                             <div className="resume-project-heading d-flex flex-wrap justify-content-between align-items-start gap-2 mb-2">
-                              <h5 className="fw-semibold mb-0">{project.title}</h5>
+                              <h3 className="h5 fw-semibold mb-0">{project.title}</h3>
                               <span className="badge bg-dark-subtle text-dark rounded-pill">
                                 {project.category}
                               </span>
