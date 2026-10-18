@@ -1,129 +1,17 @@
+import { getProjects } from '../data/projects';
+import { useLanguage } from '../i18n/LanguageContext';
 import React from 'react';
 import { FaGithub, FaEye } from 'react-icons/fa';
 
-interface Project {
-  title: string;
-  description: string;
-  technologies: string[];
-  link?: string;
-  demoLink?: string;
-  image?: string;
-  category: string;
-}
-
-const projects: Project[] = [
-  {
-    title: 'Product Store App',
-    description:
-      'Modern ürün mağazası uygulaması. JavaScript ile geliştirilmiş kullanıcı dostu e-ticaret platformu.',
-    technologies: ['JavaScript', 'HTML', 'CSS', 'E-commerce'],
-    link: 'https://github.com/someoxygen/product-store-app',
-    category: 'Frontend'
-  },
-  {
-    title: 'Chat App',
-    description:
-      'Gerçek zamanlı mesajlaşma uygulaması. TypeScript ile geliştirilmiş modern chat platformu.',
-    technologies: ['TypeScript', 'React', 'Real-time', 'WebSocket'],
-    link: 'https://github.com/someoxygen/chat-app',
-    category: 'Full-Stack'
-  },
-  {
-    title: 'City Guide',
-    description:
-      'Angular ve .NET Core ile geliştirilmiş şehir rehberi uygulaması. TypeScript kullanılarak modern frontend teknolojileri ile oluşturuldu.',
-    technologies: ['Angular', '.NET Core', 'TypeScript', 'Bootstrap'],
-    link: 'https://github.com/someoxygen/city-guide',
-    category: 'Full-Stack'
-  },
-  {
-    title: 'Messaging App',
-    description:
-      'Gerçek zamanlı mesajlaşma uygulaması. Flutter ile geliştirilmiş modern mesajlaşma uygulaması.',
-    technologies: ['Firebase', 'Flutter', 'Real-time', 'WebSocket'],
-    link: 'https://github.com/someoxygen/messaging-app',
-    category: 'Frontend'
-  },
-  {
-    title: 'Çarşı Pazar Project',
-    description:
-      'Çarşı Pazar web uygulaması projesi. C# ile geliştirilmiş modern e-ticaret ve pazar yeri platformu.',
-    technologies: ['C#', '.NET', 'MSSQL', 'Bootstrap'],
-    link: 'https://github.com/someoxygen/CarsiPazarProject',
-    category: 'Full-Stack'
-  },
-  {
-    title: 'Notefy',
-    description:
-      'Modern not defteri uygulaması. Kullanıcı dostu arayüz ve güçlü backend altyapısı ile geliştirilmiş tam özellikli not alma uygulaması.',
-    technologies: ['TypeScript', 'Angular', '.NET Core', 'Entity Framework'],
-    link: 'https://github.com/someoxygen/Notefy',
-    category: 'Full-Stack'
-  },
-  {
-    title: 'Çarşı Pazar',
-    description:
-      'Çarşı Pazar web uygulaması. C# ile geliştirilmiş modern e-ticaret ve pazar yeri platformu.',
-    technologies: ['C#', '.NET', 'MSSQL', 'Bootstrap'],
-    link: 'https://github.com/someoxygen/CarsiPazar',
-    category: 'Full-Stack'
-  },
-  {
-    title: 'Movie App',
-    description:
-      'Basit film web sitesi. C# ile geliştirilmiş film bilgileri, kullanıcı yorumları ve admin paneli özellikleri.',
-    technologies: ['C#', '.NET MVC', 'MSSQL', 'Bootstrap'],
-    link: 'https://github.com/someoxygen/MovieApp',
-    category: 'Full-Stack'
-  },
-  {
-    title: 'Inventor Automation',
-    description:
-      'Autodesk Inventor uygulama otomasyonu. C# ile geliştirilmiş CAD yazılımı entegrasyonu ve otomasyon projesi.',
-    technologies: ['C#', 'Autodesk Inventor API', '.NET', 'Automation'],
-    link: 'https://github.com/someoxygen/InventorAutomation',
-    category: 'Backend'
-  },
-  {
-    title: 'Phone Book App',
-    description:
-      'Telefon rehberi uygulaması. C# ile geliştirilmiş kullanıcı dostu rehber yönetim sistemi.',
-    technologies: ['C#', '.NET', 'MSSQL', 'Windows Forms'],
-    link: 'https://github.com/someoxygen/PhoneBookApp',
-    category: 'Backend'
-  },
-  {
-    title: 'Paper.js Project',
-    description:
-      'Paper.js Angular projesi. TypeScript ile geliştirilmiş interaktif çizim ve animasyon uygulaması.',
-    technologies: ['TypeScript', 'Angular', 'Paper.js', 'Canvas'],
-    link: 'https://github.com/someoxygen/paperjs-project',
-    category: 'Frontend'
-  },
-  {
-    title: 'Product List API',
-    description:
-      'Ürün listeleme API\'si. JavaScript ile geliştirilmiş RESTful API ve ürün yönetim sistemi.',
-    technologies: ['JavaScript', 'Node.js', 'Express.js', 'REST API'],
-    link: 'https://github.com/someoxygen/product-list-api',
-    category: 'Backend'
-  },
-  {
-    title: 'Portfolio Website',
-    description:
-      'React ve TypeScript ile geliştirilmiş modern portfolyo sitesi. Responsive tasarım ve performans odaklı yaklaşım.',
-    technologies: ['React', 'TypeScript', 'Bootstrap', 'CSS3'],
-    link: 'https://github.com/someoxygen/my-portfolio',
-    category: 'Frontend'
-  }
-];
-
 const Projects: React.FC = () => {
-  const categories = ['Tümü', 'Frontend', 'Backend', 'Full-Stack'];
-  const [selectedCategory, setSelectedCategory] = React.useState('Tümü');
+  const { t } = useLanguage();
+  const projects = getProjects(t);
 
-  const filteredProjects = selectedCategory === 'Tümü' 
-    ? projects 
+  const categories = ['all', 'Frontend', 'Backend', 'Full-Stack'];
+  const [selectedCategory, setSelectedCategory] = React.useState('all');
+
+  const filteredProjects = selectedCategory === 'all'
+    ? projects
     : projects.filter(project => project.category === selectedCategory);
 
   return (
@@ -134,11 +22,10 @@ const Projects: React.FC = () => {
           <div className="row justify-content-center text-center">
             <div className="col-lg-8 animate-fade-in-up">
               <h1 className="display-4 fw-bold mb-4">
-                Projelerim
+                {t("Projelerim")}
               </h1>
               <p className="lead mb-5 opacity-90">
-                Modern teknolojilerle geliştirdiğim projeler ve çözümler. 
-                Her proje, kullanıcı deneyimi ve performans odaklı yaklaşımla tasarlandı.
+                {t("Modern teknolojilerle geliştirdiğim projeler ve çözümler. Her proje, kullanıcı deneyimi ve performans odaklı yaklaşımla tasarlandı.")}
               </p>
             </div>
           </div>
@@ -151,10 +38,12 @@ const Projects: React.FC = () => {
           {/* Category Filter */}
           <div className="row justify-content-center mb-5">
             <div className="col-lg-8">
-              <div className="d-flex justify-content-center flex-wrap gap-2">
+              <div className="project-filters d-flex justify-content-center flex-wrap gap-2">
                 {categories.map((category) => (
                   <button
                     key={category}
+                    type="button"
+                    aria-pressed={selectedCategory === category}
                     onClick={() => setSelectedCategory(category)}
                     className={`btn rounded-pill px-4 py-2 ${
                       selectedCategory === category
@@ -162,7 +51,7 @@ const Projects: React.FC = () => {
                         : 'btn-outline-primary'
                     }`}
                   >
-                    {category}
+                    {category === 'all' ? t('Tümü') : category}
                   </button>
                 ))}
               </div>
@@ -172,8 +61,8 @@ const Projects: React.FC = () => {
           {/* Projects Grid */}
           <div className="row g-4">
             {filteredProjects.map((project, index) => (
-              <div 
-                key={index} 
+              <div
+                key={index}
                 className="col-md-6 col-lg-4 animate-fade-in-up"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
@@ -184,7 +73,7 @@ const Projects: React.FC = () => {
                         {project.category}
                       </span>
                     </div>
-                    
+
                     <h5 className="card-title fw-semibold mb-3">{project.title}</h5>
                     <p className="card-text text-muted flex-grow-1">{project.description}</p>
 
@@ -196,8 +85,8 @@ const Projects: React.FC = () => {
                           </span>
                         ))}
                       </div>
-                      
-                      <div className="d-flex gap-2">
+
+                      <div className="project-actions d-flex flex-wrap gap-2">
                         {project.link && (
                           <a
                             href={project.link}

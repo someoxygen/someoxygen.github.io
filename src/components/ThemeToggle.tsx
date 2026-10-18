@@ -1,8 +1,10 @@
+import { useLanguage } from '../i18n/LanguageContext';
 import React, { useEffect, useState } from 'react';
 import { FaMoon, FaSun } from 'react-icons/fa';
 import { applyTheme, getInitialTheme, saveTheme } from '../theme';
 
 const ThemeToggle: React.FC = () => {
+  const { t } = useLanguage();
   const [theme, setTheme] = useState(getInitialTheme);
 
   useEffect(() => {
@@ -15,7 +17,7 @@ const ThemeToggle: React.FC = () => {
     saveTheme(nextTheme);
   };
 
-  const label = theme === 'light' ? 'Gece görünümüne geç' : 'Gündüz görünümüne geç';
+  const label = theme === 'light' ? t("Gece görünümüne geç") : t("Gündüz görünümüne geç");
 
   return (
     <button
