@@ -1,18 +1,11 @@
-import React, { createContext, useContext, useEffect, useState } from 'react';
+import React, { createContext, useContext, useEffect } from 'react';
 import english from './en.json';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { Language, localizedPath, routeInfo } from '../seo/config';
 
-type Language = 'tr' | 'en';
 type TranslationKey = keyof typeof english;
 export type Translator = (key: TranslationKey) => string;
 const storageKey = 'portfolio-language';
-
-function initialLanguage(): Language {
-  try {
-    return localStorage.getItem(storageKey) === 'en' ? 'en' : 'tr';
-  } catch {
-    return 'tr';
-  }
-}
 
 const LanguageContext = createContext({
   language: 'tr' as Language,
@@ -22,14 +15,15 @@ const LanguageContext = createContext({
 });
 
 export const LanguageProvider: React.FC<React.PropsWithChildren> = ({ children }) => {
-  const [language, setLanguage] = useState<Language>(initialLanguage);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const { language } = routeInfo(location.pathname);
+  const setLanguage = (next: Language) => {
+    navigate(localizedPath(location.pathname, next) + location.search + location.hash);
+  };
 
   useEffect(() => {
     document.documentElement.lang = language;
-    const description = document.querySelector('meta[name="description"]');
-    description?.setAttribute('content', language === 'tr'
-      ? 'Mustafa Yücel — Senior Full Stack Engineer. .NET, Node.js, React, Angular ve Flutter ile kurumsal yazılımlar, web ve mobil uygulamalar.'
-      : 'Mustafa Yücel — Senior Full Stack Engineer. Enterprise software, web and mobile applications with .NET, Node.js, React, Angular and Flutter.');
     try {
       localStorage.setItem(storageKey, language);
     } catch {

@@ -22,11 +22,12 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "react-scripts build && node scripts/prerender.cjs && node scripts/verify-seo.cjs",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build --nojekyll",
+    "verify:seo": "node scripts/verify-seo.cjs"
   },
   "jest": {
     "moduleNameMapper": {
@@ -54,6 +55,7 @@
   },
   "devDependencies": {
     "@types/react-router-dom": "^5.3.3",
+    "esbuild": "^0.28.2",
     "gh-pages": "^6.3.0"
   },
   "homepage": "https://mustafayucel.com"

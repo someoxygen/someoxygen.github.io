@@ -1,11 +1,15 @@
 import { useLanguage } from '../i18n/LanguageContext';
 import React, { useEffect, useState } from 'react';
 import { FaMoon, FaSun } from 'react-icons/fa';
-import { applyTheme, getInitialTheme, saveTheme } from '../theme';
+import { applyTheme, getInitialTheme, saveTheme, Theme } from '../theme';
 
 const ThemeToggle: React.FC = () => {
   const { t } = useLanguage();
-  const [theme, setTheme] = useState(getInitialTheme);
+  const [theme, setTheme] = useState<Theme>('light');
+
+  useEffect(() => {
+    setTheme(getInitialTheme());
+  }, []);
 
   useEffect(() => {
     applyTheme(theme);
