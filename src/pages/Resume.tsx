@@ -1,3 +1,5 @@
+import { getProjects } from '../data/projects';
+import { useLanguage } from '../i18n/LanguageContext';
 import React from 'react';
 import {
   FaGraduationCap,
@@ -10,35 +12,26 @@ import {
   FaExternalLinkAlt
 } from 'react-icons/fa';
 
-interface Project {
-  title: string;
-  description: string;
-  technologies: string[];
-  link?: string;
-  demoLink?: string;
-  image?: string;
-  category: string;
-}
-
 const Resume: React.FC = () => {
+  const { t } = useLanguage();
   const skills = {
-    frontend: ['HTML', 'CSS', 'Tailwind CSS', 'Bootstrap', 'Angular', 'React', 'Vue', 'JavaScript', 'TypeScript'],
-    backend: ['C#', '.NET', '.NET Core', '.NET MVC', 'Node.js', 'Web API', 'REST API', 'SOAP API'],
-    database: ['MSSQL', 'PostgreSQL', 'MongoDB', 'Redis', 'Entity Framework', 'EF Core', 'LINQ', 'ADO.NET'],
-    tools: ['Git', 'GitHub', 'GitLab', 'Azure DevOps', 'RabbitMQ', 'Kafka', 'JIRA', 'Agile', 'OOP', 'SOLID', 'gRPC']
+    frontend: ['HTML5', 'CSS3', 'Tailwind CSS', 'Bootstrap', 'Angular', 'React', 'Vue', 'JavaScript', 'TypeScript', 'Flutter', 'Dart'],
+    backend: ['C#', 'Java', '.NET 5/6/8/10', 'ASP.NET Core', 'ASP.NET MVC', 'Node.js', 'REST API', 'SOAP API', 'gRPC'],
+    database: ['SQL Server / MSSQL', 'PostgreSQL', 'MongoDB', 'Redis'],
+    tools: ['RabbitMQ', 'Kafka', 'Docker', 'Azure DevOps', 'GitLab CI/CD', 'Git', 'GitHub', 'GitLab', 'Microservices', 'CQRS', 'Distributed Systems', 'Clean Architecture', 'SOLID', 'Agile']
   };
 
   const languages = [
-    { name: 'Türkçe', level: 'Ana Dil' },
-    { name: 'İngilizce', level: 'İleri Seviye' }
+    { name: t("Türkçe"), level: t("Ana Dil") },
+    { name: t("İngilizce"), level: t("İleri Seviye") }
   ];
 
   const education = [
     {
-      degree: 'Bilgisayar Mühendisliği',
-      school: 'Kocaeli Üniversitesi',
+      degree: t("Bilgisayar Mühendisliği Lisans"),
+      school: t("Kocaeli Üniversitesi"),
       period: '2013–2018',
-      description: 'Yazılım geliştirme, veri yapıları ve algoritmalar üzerine odaklanan müfredat.'
+      description: t("Eylül 2013 – Haziran 2018 tarihleri arasında Bilgisayar Mühendisliği lisans eğitimi.")
     }
   ];
 
@@ -46,142 +39,37 @@ const Resume: React.FC = () => {
     {
       title: 'Full Stack Developer',
       company: 'Çuhadaroğlu Metal A.Ş.',
-      period: 'Nisan 2025–Haziran 2026',
+      period: '04/2025–06/2026',
       description:
-        'Şirket içinde geliştirilen gizli bir uygulamada, JavaScript tabanlı frontend, Node.js ve .NET ile oluşturulmuş backend projeleri üzerinde müşteri ihtiyaçlarına göre yazılım geliştirmeleri.',
-      technologies: ['JavaScript', 'Node.js', '.NET']
+        t(".NET ve Node.js ile kurumsal web uygulamalarının geliştirme ve bakım süreçlerinde görev aldım. Ölçeklenebilir servis odaklı ve mikroservis tabanlı mimariler tasarladım; Redis cache ve RabbitMQ mesajlaşma yapılarını uyguladım. İş birimleri ve teknik ekiplerle koordineli çalışarak SOLID prensiplerini, temiz kod standartlarını ve Agile metodolojileri uyguladım. Azure DevOps CI/CD kullanan 6 kişilik Agile ekiplerde çalıştım."),
+      technologies: ['.NET', 'Node.js', 'Microservices', 'Redis', 'RabbitMQ', 'Azure DevOps', 'CI/CD', 'SOLID', 'Agile']
     },
     {
       title: 'Full Stack Developer',
       company: 'Overtech Bilgi Teknolojileri',
-      period: 'Nisan 2021–Nisan 2025',
+      period: '04/2021–04/2025',
       description:
-        'BiletBank BBFaring, PavoPay ve OverEgov projelerinde frontend, backend, web servis ve entegrasyon geliştirmeleri. 20 farklı özel entegratörlük uygulaması ve GİB entegrasyonları.',
-      technologies: ['Angular', 'React', 'Vue', 'C#', '.NET', 'REST API', 'SOAP API']
+        t("Milyonlarca kullanıcıya hizmet eden havayolu bilet fiyatlandırma sistemleri, ödeme platformları ve e-fatura çözümleri geliştirdim. Kritik iş süreçlerini destekleyen 10+ API ve mikroservisin tasarım, geliştirme ve bakım süreçlerinde görev aldım. RESTful API ve SOAP servisleri geliştirdim ve entegre ettim; JWT Authentication ve OAuth2 ile güvenli kimlik doğrulama ve yetkilendirme yapıları uyguladım. Birden fazla kurumsal uygulamada Redis ve RabbitMQ kullandım. GitLab CI/CD kullanan 10–30 kişilik Agile ekiplerde çalıştım."),
+      technologies: ['REST API', 'SOAP API', 'Microservices', 'JWT', 'OAuth2', 'Redis', 'RabbitMQ', 'GitLab CI/CD', 'Agile']
     },
     {
-      title: 'IT Helpdesk Uzmanı',
+      title: 'IT Helpdesk Specialist',
       company: 'Türk Telekom A.Ş.',
-      period: 'Kasım 2020–Nisan 2021',
+      period: '11/2020–04/2021',
       description:
-        'Türk Telekom personelinin bilgisayarlarındaki yazılımsal ve donanımsal sıkıntıların giderilmesi, program kurulumları ve teknik destek.',
-      technologies: ['Teknik Destek', 'Sistem Yönetimi']
+        t("Kurumsal ortamda yazılım, donanım ve teknik destek sağladım. Uygulama, cihaz ve ağ erişimiyle ilgili kullanıcı sorunlarını teşhis ederek çözdüm. Karmaşık sorunları ilgili ekiplere yönlendirdim ve destek süreçlerini dokümante ettim."),
+      technologies: [t("Yazılım ve Donanım Desteği"), t("Ağ Erişimi"), t("Sorun Giderme"), t("Dokümantasyon")]
     }
   ];
 
-  // >>> GÜNCELLENEN PROJELER <<<
-  const projects: Project[] = [
-    {
-      title: 'Product Store App',
-      description:
-        'Modern ürün mağazası uygulaması. JavaScript ile geliştirilmiş kullanıcı dostu e-ticaret platformu.',
-      technologies: ['JavaScript', 'HTML', 'CSS', 'E-commerce'],
-      link: 'https://github.com/someoxygen/product-store-app',
-      category: 'Frontend'
-    },
-    {
-      title: 'Chat App',
-      description:
-        'Gerçek zamanlı mesajlaşma uygulaması. TypeScript ile geliştirilmiş modern chat platformu.',
-      technologies: ['TypeScript', 'React', 'Real-time', 'WebSocket'],
-      link: 'https://github.com/someoxygen/chat-app',
-      category: 'Full-Stack'
-    },
-    {
-      title: 'City Guide',
-      description:
-        'Angular ve .NET Core ile geliştirilmiş şehir rehberi uygulaması. TypeScript kullanılarak modern frontend teknolojileri ile oluşturuldu.',
-      technologies: ['Angular', '.NET Core', 'TypeScript', 'Bootstrap'],
-      link: 'https://github.com/someoxygen/city-guide',
-      category: 'Full-Stack'
-    },
-    {
-      title: 'Messaging App',
-      description:
-        'Gerçek zamanlı mesajlaşma uygulaması. Flutter ile geliştirilmiş modern mesajlaşma uygulaması.',
-      technologies: ['Firebase', 'Flutter', 'Real-time', 'WebSocket'],
-      link: 'https://github.com/someoxygen/messaging-app',
-      category: 'Frontend'
-    },
-    {
-      title: 'Çarşı Pazar Project',
-      description:
-        'Çarşı Pazar web uygulaması projesi. C# ile geliştirilmiş modern e-ticaret ve pazar yeri platformu.',
-      technologies: ['C#', '.NET', 'MSSQL', 'Bootstrap'],
-      link: 'https://github.com/someoxygen/CarsiPazarProject',
-      category: 'Full-Stack'
-    },
-    {
-      title: 'Notefy',
-      description:
-        'Modern not defteri uygulaması. Kullanıcı dostu arayüz ve güçlü backend altyapısı ile geliştirilmiş tam özellikli not alma uygulaması.',
-      technologies: ['TypeScript', 'Angular', '.NET Core', 'Entity Framework'],
-      link: 'https://github.com/someoxygen/Notefy',
-      category: 'Full-Stack'
-    },
-    {
-      title: 'Çarşı Pazar',
-      description:
-        'Çarşı Pazar web uygulaması. C# ile geliştirilmiş modern e-ticaret ve pazar yeri platformu.',
-      technologies: ['C#', '.NET', 'MSSQL', 'Bootstrap'],
-      link: 'https://github.com/someoxygen/CarsiPazar',
-      category: 'Full-Stack'
-    },
-    {
-      title: 'Movie App',
-      description:
-        'Basit film web sitesi. C# ile geliştirilmiş film bilgileri, kullanıcı yorumları ve admin paneli özellikleri.',
-      technologies: ['C#', '.NET MVC', 'MSSQL', 'Bootstrap'],
-      link: 'https://github.com/someoxygen/MovieApp',
-      category: 'Full-Stack'
-    },
-    {
-      title: 'Inventor Automation',
-      description:
-        'Autodesk Inventor uygulama otomasyonu. C# ile geliştirilmiş CAD yazılımı entegrasyonu ve otomasyon projesi.',
-      technologies: ['C#', 'Autodesk Inventor API', '.NET', 'Automation'],
-      link: 'https://github.com/someoxygen/InventorAutomation',
-      category: 'Backend'
-    },
-    {
-      title: 'Phone Book App',
-      description:
-        'Telefon rehberi uygulaması. C# ile geliştirilmiş kullanıcı dostu rehber yönetim sistemi.',
-      technologies: ['C#', '.NET', 'MSSQL', 'Windows Forms'],
-      link: 'https://github.com/someoxygen/PhoneBookApp',
-      category: 'Backend'
-    },
-    {
-      title: 'Paper.js Project',
-      description:
-        'Paper.js Angular projesi. TypeScript ile geliştirilmiş interaktif çizim ve animasyon uygulaması.',
-      technologies: ['TypeScript', 'Angular', 'Paper.js', 'Canvas'],
-      link: 'https://github.com/someoxygen/paperjs-project',
-      category: 'Frontend'
-    },
-    {
-      title: 'Product List API',
-      description:
-        "Ürün listeleme API'si. JavaScript ile geliştirilmiş RESTful API ve ürün yönetim sistemi.",
-      technologies: ['JavaScript', 'Node.js', 'Express.js', 'REST API'],
-      link: 'https://github.com/someoxygen/product-list-api',
-      category: 'Backend'
-    },
-    {
-      title: 'Portfolio Website',
-      description:
-        'React ve TypeScript ile geliştirilmiş modern portfolyo sitesi. Responsive tasarım ve performans odaklı yaklaşım.',
-      technologies: ['React', 'TypeScript', 'Bootstrap', 'CSS3'],
-      link: 'https://github.com/someoxygen/my-portfolio',
-      category: 'Frontend'
-    }
-  ];
+  const projects = getProjects(t);
 
   const certifications = [
-    { name: 'Sistem ve Ağ Uzmanlığı Eğitimi', issuer: 'Bilişim Eğitim Merkezi - İŞKUR' },
-    { name: 'C# ile Nesneye Yönelik Programlama', issuer: 'İSMEK' },
-    { name: 'HTML ve CSS3 ile Responsive Kodlama', issuer: 'İSMEK' },
-    { name: 'Bootstrap CSS Framework ile Kodlama', issuer: 'İSMEK' }
+    { name: t("Oyunlaştırılmış Agile & Scrum Eğitimi") },
+    { name: t("Sistem ve Ağ Uzmanlığı Eğitimi") },
+    { name: t("C# ile Nesne Yönelimli Programlama") },
+    { name: t("HTML & CSS3 ile Duyarlı Web Geliştirme") },
+    { name: t("Bootstrap CSS Çerçevesi") }
   ];
 
   return (
@@ -191,11 +79,9 @@ const Resume: React.FC = () => {
         <div className="container">
           <div className="row justify-content-center text-center">
             <div className="col-lg-8 animate-fade-in-up">
-              <h1 className="display-4 fw-bold mb-4">Özgeçmiş</h1>
+              <h1 className="display-4 fw-bold mb-4">{t("Özgeçmiş")}</h1>
               <p className="lead mb-5 opacity-90">
-                5 yıllık endüstri deneyimine sahip, yaratıcı ve çözüm odaklı bir Full Stack Developer'ım.
-                C#, Node.js, Angular, React, Vue ve modern web teknolojileri ile kullanıcı deneyimini ön planda
-                tutan projeler geliştiriyorum.
+                {t("Kurumsal yazılımlar, dağıtık sistemler, web ve mobil uygulamalar geliştirmede 5+ yıllık deneyime sahip bir Senior Full Stack Engineer’ım. ASP.NET Core, .NET, Node.js, Angular, React ve Flutter ile çalışıyorum. Havayolu bilet fiyatlandırma sistemleri, ödeme platformları, e-fatura çözümleri ve mühendislik otomasyon uygulamalarına katkı sağladım.")}
               </p>
             </div>
           </div>
@@ -203,48 +89,79 @@ const Resume: React.FC = () => {
       </section>
 
       {/* Resume Content */}
-      <section className="py-5 section-light">
+      <section className="py-5 section-light resume-content">
         <div className="container">
-          <div className="row g-5">
-            {/* Education */}
-            <div className="col-lg-6 animate-slide-in-left">
-              <div className="card border-0 shadow-sm h-100">
-                <div className="card-body p-4">
-                  <div className="d-flex align-items-center mb-4">
-                    <div className="me-3 text-primary">
-                      <FaGraduationCap className="fa-2x" />
-                    </div>
-                    <h3 className="fw-bold mb-0">Eğitim</h3>
-                  </div>
-
-                  {education.map((item, index) => (
-                    <div key={index} className="mb-4 pb-4 border-bottom border-light">
-                      <div className="d-flex justify-content-between align-items-start mb-2">
-                        <h5 className="fw-semibold mb-1">{item.degree}</h5>
-                        <span className="badge bg-primary rounded-pill">{item.period}</span>
+          <div className="resume-layout">
+            <aside className="resume-sidebar" aria-label={t("Eğitim ve sertifikalar")}>
+              {/* Education */}
+              <div className="resume-education animate-slide-in-left">
+                <div className="card border-0 shadow-sm">
+                  <div className="card-body p-4">
+                    <div className="d-flex align-items-center mb-4">
+                      <div className="me-3 text-primary">
+                        <FaGraduationCap className="fa-2x" />
                       </div>
-                      <h6 className="text-primary mb-2">{item.school}</h6>
-                      <p className="text-muted mb-0">{item.description}</p>
+                      <h3 className="fw-bold mb-0">{t("Eğitim")}</h3>
                     </div>
-                  ))}
+
+                    {education.map((item, index) => (
+                      <div key={index} className="resume-education-item">
+                        <div className="resume-entry-heading">
+                          <h5 className="fw-semibold mb-1">{item.degree}</h5>
+                          <span className="badge bg-primary rounded-pill">{item.period}</span>
+                        </div>
+                        <h6 className="text-primary mb-2">{item.school}</h6>
+                        <p className="text-muted mb-0">{item.description}</p>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
-            </div>
+
+              {/* Certifications */}
+              <div className="resume-certifications animate-fade-in-up">
+                <div className="card border-0 shadow-sm">
+                  <div className="card-body p-4">
+                    <div className="d-flex align-items-center mb-4">
+                      <div className="me-3 text-primary">
+                        <FaCertificate className="fa-2x" />
+                      </div>
+                      <h3 className="fw-bold mb-0">{t("Sertifikalar")}</h3>
+                    </div>
+
+                    <div className="row g-4">
+                      {certifications.map((cert, index) => (
+                        <div key={index} className="col-12">
+                          <div className="d-flex align-items-start">
+                            <div className="me-3 text-primary">
+                              <FaCertificate />
+                            </div>
+                            <div>
+                              <h6 className="fw-semibold mb-1">{cert.name}</h6>
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </aside>
 
             {/* Experience */}
-            <div className="col-lg-6 animate-slide-in-right">
+            <div className="resume-experience animate-slide-in-right">
               <div className="card border-0 shadow-sm h-100">
                 <div className="card-body p-4">
                   <div className="d-flex align-items-center mb-4">
                     <div className="me-3 text-primary">
                       <FaBriefcase className="fa-2x" />
                     </div>
-                    <h3 className="fw-bold mb-0">İş Deneyimi</h3>
+                    <h3 className="fw-bold mb-0">{t("İş Deneyimi")}</h3>
                   </div>
 
                   {experience.map((item, index) => (
-                    <div key={index} className="mb-4 pb-4 border-bottom border-light">
-                      <div className="d-flex justify-content-between align-items-start mb-2">
+                    <div key={index} className="resume-timeline-item">
+                      <div className="resume-entry-heading">
                         <h5 className="fw-semibold mb-1">{item.title}</h5>
                         <span className="badge bg-primary rounded-pill">{item.period}</span>
                       </div>
@@ -264,21 +181,21 @@ const Resume: React.FC = () => {
             </div>
 
             {/* Skills */}
-            <div className="col-12 animate-fade-in-up">
+            <div className="resume-full-width animate-fade-in-up">
               <div className="card border-0 shadow-sm">
                 <div className="card-body p-4">
                   <div className="d-flex align-items-center mb-4">
                     <div className="me-3 text-primary">
                       <FaCode className="fa-2x" />
                     </div>
-                    <h3 className="fw-bold mb-0">Teknik Yetenekler</h3>
+                    <h3 className="fw-bold mb-0">{t("Teknik Yetenekler")}</h3>
                   </div>
 
                   <div className="row g-4">
                     <div className="col-md-6">
                       <h5 className="fw-semibold mb-3">
                         <FaCode className="me-2 text-primary" />
-                        Frontend
+                        {t("Frontend & Mobil")}
                       </h5>
                       <div className="d-flex flex-wrap gap-2">
                         {skills.frontend.map((skill, index) => (
@@ -306,7 +223,7 @@ const Resume: React.FC = () => {
                     <div className="col-md-6">
                       <h5 className="fw-semibold mb-3">
                         <FaTools className="me-2 text-primary" />
-                        Veritabanı & Araçlar
+                        {t("Veritabanı, DevOps & Mimari")}
                       </h5>
                       <div className="d-flex flex-wrap gap-2">
                         {[...skills.database, ...skills.tools].map((skill, index) => (
@@ -320,7 +237,7 @@ const Resume: React.FC = () => {
                     <div className="col-md-6">
                       <h5 className="fw-semibold mb-3">
                         <FaLanguage className="me-2 text-primary" />
-                        Diller
+                        {t("Diller")}
                       </h5>
                       <div className="d-flex flex-column gap-2">
                         {languages.map((lang, index) => (
@@ -337,14 +254,14 @@ const Resume: React.FC = () => {
             </div>
 
             {/* Projects */}
-            <div className="col-12 animate-fade-in-up">
+            <div className="resume-full-width animate-fade-in-up">
               <div className="card border-0 shadow-sm">
                 <div className="card-body p-4">
                   <div className="d-flex align-items-center mb-4">
                     <div className="me-3 text-primary">
                       <FaCode className="fa-2x" />
                     </div>
-                    <h3 className="fw-bold mb-0">Kişisel Projeler</h3>
+                    <h3 className="fw-bold mb-0">{t("Kişisel Projeler")}</h3>
                   </div>
 
                   <div className="row g-4">
@@ -352,7 +269,7 @@ const Resume: React.FC = () => {
                       <div key={index} className="col-md-6">
                         <div className="card border-0 bg-light h-100">
                           <div className="card-body d-flex flex-column">
-                            <div className="d-flex justify-content-between align-items-start mb-2">
+                            <div className="resume-project-heading d-flex flex-wrap justify-content-between align-items-start gap-2 mb-2">
                               <h5 className="fw-semibold mb-0">{project.title}</h5>
                               <span className="badge bg-dark-subtle text-dark rounded-pill">
                                 {project.category}
@@ -366,7 +283,7 @@ const Resume: React.FC = () => {
                                 </span>
                               ))}
                             </div>
-                            <div className="mt-auto d-flex gap-2">
+                            <div className="project-actions mt-auto d-flex flex-wrap gap-2">
                               {project.link && (
                                 <a
                                   href={project.link}
@@ -384,7 +301,7 @@ const Resume: React.FC = () => {
                                   rel="noreferrer"
                                   className="btn btn-sm btn-outline-secondary d-inline-flex align-items-center gap-2"
                                 >
-                                  Canlı Demo <FaExternalLinkAlt />
+                                  {t("Canlı Demo")} <FaExternalLinkAlt />
                                 </a>
                               )}
                             </div>
@@ -397,35 +314,7 @@ const Resume: React.FC = () => {
               </div>
             </div>
 
-            {/* Certifications */}
-            <div className="col-12 animate-fade-in-up">
-              <div className="card border-0 shadow-sm">
-                <div className="card-body p-4">
-                  <div className="d-flex align-items-center mb-4">
-                    <div className="me-3 text-primary">
-                      <FaCertificate className="fa-2x" />
-                    </div>
-                    <h3 className="fw-bold mb-0">Sertifikalar</h3>
-                  </div>
 
-                  <div className="row g-4">
-                    {certifications.map((cert, index) => (
-                      <div key={index} className="col-md-6">
-                        <div className="d-flex align-items-start">
-                          <div className="me-3 text-primary">
-                            <FaCertificate />
-                          </div>
-                          <div>
-                            <h6 className="fw-semibold mb-1">{cert.name}</h6>
-                            <p className="text-muted mb-0">{cert.issuer}</p>
-                          </div>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </section>

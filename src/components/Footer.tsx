@@ -1,8 +1,10 @@
+import { useLanguage } from '../i18n/LanguageContext';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FaGithub, FaLinkedin, FaEnvelope, FaHeart, FaPhone } from 'react-icons/fa';
 
 const Footer: React.FC = () => {
+  const { t } = useLanguage();
   const currentYear = new Date().getFullYear();
   
   const socialLinks = [
@@ -21,7 +23,7 @@ const Footer: React.FC = () => {
     {
       icon: <FaEnvelope />,
       url: 'mailto:mustafaycl37@gmail.com',
-      title: 'E-posta',
+      title: t("E-posta"),
       color: 'hover:text-red-400'
     }
   ];
@@ -37,8 +39,7 @@ const Footer: React.FC = () => {
                 <span>Mustafa Yücel</span>
               </h4>
               <p className="text-muted mb-4">
-                5 yıllık endüstri deneyimine sahip, yaratıcı ve çözüm odaklı bir Full Stack Developer'ım. 
-                C#, Node.js, Angular, React, Vue ve modern web teknolojileri ile projeler geliştiriyorum.
+                {t("5+ yıllık deneyime sahip bir Senior Full Stack Engineer’ım. .NET, Node.js, Angular, React ve Flutter ile kurumsal yazılımlar, dağıtık sistemler, web ve mobil uygulamalar geliştiriyorum.")}
               </p>
               <div className="d-flex gap-3">
                 {socialLinks.map((social, index) => (
@@ -60,21 +61,21 @@ const Footer: React.FC = () => {
           {/* Quick Links */}
           <div className="col-lg-2 col-md-6 mb-4 mb-lg-0">
             <div className="animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
-              <h6 className="fw-bold mb-3">Hızlı Linkler</h6>
+              <h6 className="fw-bold mb-3">{t("Hızlı Linkler")}</h6>
               <ul className="list-unstyled">
                 <li className="mb-2">
                   <Link to="/" className="text-muted text-decoration-none hover-text-white">
-                    Hakkımda
+                    {t("Hakkımda")}
                   </Link>
                 </li>
                 <li className="mb-2">
                   <Link to="/projects" className="text-muted text-decoration-none hover-text-white">
-                    Projelerim
+                    {t("Projelerim")}
                   </Link>
                 </li>
                 <li className="mb-2">
                   <Link to="/resume" className="text-muted text-decoration-none hover-text-white">
-                    CV
+                    {t("CV")}
                   </Link>
                 </li>
               </ul>
@@ -84,19 +85,19 @@ const Footer: React.FC = () => {
           {/* Services */}
           <div className="col-lg-2 col-md-6 mb-4 mb-lg-0">
             <div className="animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-              <h6 className="fw-bold mb-3">Hizmetler</h6>
+              <h6 className="fw-bold mb-3">{t("Hizmetler")}</h6>
               <ul className="list-unstyled">
                 <li className="mb-2">
-                  <span className="text-muted">Full Stack Geliştirme</span>
+                  <span className="text-muted">{t("Full Stack Geliştirme")}</span>
                 </li>
                 <li className="mb-2">
-                  <span className="text-muted">API & Web Servisleri</span>
+                  <span className="text-muted">{t("API & Web Servisleri")}</span>
                 </li>
                 <li className="mb-2">
-                  <span className="text-muted">Veritabanı Yönetimi</span>
+                  <span className="text-muted">{t("Veritabanı Yönetimi")}</span>
                 </li>
                 <li className="mb-2">
-                  <span className="text-muted">Sistem Entegrasyonu</span>
+                  <span className="text-muted">{t("Sistem Entegrasyonu")}</span>
                 </li>
               </ul>
             </div>
@@ -105,7 +106,7 @@ const Footer: React.FC = () => {
           {/* Contact Info */}
           <div className="col-lg-4">
             <div className="animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
-              <h6 className="fw-bold mb-3">İletişim</h6>
+              <h6 className="fw-bold mb-3">{t("İletişim")}</h6>
               <div className="mb-3">
                 <p className="text-muted mb-1">
                   <FaEnvelope className="me-2" />
@@ -126,7 +127,7 @@ const Footer: React.FC = () => {
               </div>
               <div className="mb-3">
                 <p className="text-muted mb-0">
-                  Bayrampaşa / İSTANBUL
+                  {t("İstanbul, Türkiye")}
                 </p>
               </div>
             </div>
@@ -138,12 +139,12 @@ const Footer: React.FC = () => {
           <div className="row align-items-center">
             <div className="col-md-6 text-center text-md-start">
               <p className="mb-0 text-muted">
-                &copy; {currentYear} Mustafa Yücel. Tüm hakları saklıdır.
+                &copy; {currentYear} {t("Mustafa Yücel. Tüm hakları saklıdır.")}
               </p>
             </div>
             <div className="col-md-6 text-center text-md-end">
               <p className="mb-0 text-muted">
-                Made with <FaHeart className="text-danger mx-1" /> in React & TypeScript
+                {t("Sevgiyle")} <FaHeart className="text-danger mx-1" /> {t("React & TypeScript ile geliştirildi.")}
               </p>
             </div>
           </div>

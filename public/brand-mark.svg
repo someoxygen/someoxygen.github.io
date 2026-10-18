@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none">
+  <title>Mustafa Yücel — MY monogram</title>
+  <defs>
+    <linearGradient id="accent" x1="10" y1="12" x2="54" y2="52" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#56D9CB"/>
+      <stop offset="1" stop-color="#8BB7FF"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="15" fill="#0D1929"/>
+  <path d="M32 7L55 20V44L32 57L9 44V20L32 7Z" stroke="url(#accent)" stroke-opacity=".8" stroke-width="2.5" stroke-linejoin="round"/>
+  <path d="M17 40V24L24 32L31 24V40M37 24L44 32L51 24M44 32V40" stroke="url(#accent)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
