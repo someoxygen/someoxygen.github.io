@@ -50,7 +50,11 @@ const Navbar: React.FC = () => {
     }`}>
       <div className="container">
         <Link className="navbar-brand fw-bold d-flex align-items-center" to={localizedPath('/', language)}>
-          <img className="brand-mark" src={`${process.env.PUBLIC_URL}/brand-mark.svg?v=my-2`} width="40" height="40" alt="" />
+          <span
+            className="brand-mark"
+            aria-hidden="true"
+            style={{ '--brand-mark-source': `url("${process.env.PUBLIC_URL}/brand-mark.svg?v=my-5")` } as React.CSSProperties}
+          />
           <span className="brand-text">Mustafa Yücel</span>
         </Link>
 
@@ -70,7 +74,7 @@ const Navbar: React.FC = () => {
         </div>
 
         <div className={`collapse navbar-collapse ${isMenuOpen ? 'show' : ''}`} id="navbarNav">
-          <ul className="navbar-nav ms-auto">
+          <ul className="navbar-nav">
             <li className="nav-item">
               <NavLink
                 to={localizedPath('/', language)}
