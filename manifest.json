@@ -3,17 +3,17 @@
   "name": "Mustafa Yücel | Senior Full Stack Engineer",
   "icons": [
     {
-      "src": "favicon.ico",
+      "src": "favicon.ico?v=my-5",
       "sizes": "48x48 32x32 16x16",
       "type": "image/x-icon"
     },
     {
-      "src": "logo192.png",
+      "src": "logo192.png?v=my-5",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "logo512.png",
+      "src": "logo512.png?v=my-5",
       "type": "image/png",
       "sizes": "512x512"
     }
