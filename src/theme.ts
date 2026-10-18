@@ -13,6 +13,12 @@ export function getInitialTheme(): Theme {
 
 export function applyTheme(theme: Theme): void {
   document.documentElement.setAttribute('data-bs-theme', theme);
+  document.querySelectorAll<HTMLLinkElement>('link[rel="icon"][data-icon-name]').forEach((icon) => {
+    const name = icon.dataset.iconName!;
+    const suffix = theme === 'dark' ? '-dark' : '';
+    const filename = name.replace(/(\.[^.]+)$/, `${suffix}$1`);
+    icon.href = `${process.env.PUBLIC_URL}/${filename}?v=my-5`;
+  });
 }
 
 export function saveTheme(theme: Theme): void {

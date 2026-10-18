@@ -1,12 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none">
-  <title>Mustafa Yücel — MY monogram</title>
-  <defs>
-    <linearGradient id="accent" x1="10" y1="12" x2="54" y2="52" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#56D9CB"/>
-      <stop offset="1" stop-color="#8BB7FF"/>
-    </linearGradient>
-  </defs>
-  <rect width="64" height="64" rx="15" fill="#0D1929"/>
-  <path d="M32 7L55 20V44L32 57L9 44V20L32 7Z" stroke="url(#accent)" stroke-opacity=".8" stroke-width="2.5" stroke-linejoin="round"/>
-  <path d="M17 40V24L24 32L31 24V40M37 24L44 32L51 24M44 32V40" stroke="url(#accent)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <title>Mustafa Y&#252;cel code spark</title>
+  <g stroke="#A34428" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M20 15L5 32L20 49M44 15L59 32L44 49"/>
+  </g>
+  <path d="M36 7L22 35H32L28 57L43 28H33L36 7Z" fill="#A34428"/>
 </svg>
