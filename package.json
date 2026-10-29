@@ -21,6 +21,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "dev": "react-scripts start",
     "start": "react-scripts start",
     "build": "react-scripts build && node scripts/prerender.cjs && node scripts/verify-seo.cjs",
     "test": "react-scripts test",

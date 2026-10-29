@@ -1,7 +1,7 @@
-import { localizedPath } from '../seo/config';
+import { localizedPath, routeInfo } from '../seo/config';
 import { useLanguage } from '../i18n/LanguageContext';
 import React, { useState, useEffect } from 'react';
-import { Link, NavLink, useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import ThemeToggle from './ThemeToggle';
 import LanguageToggle from './LanguageToggle';
 
@@ -10,6 +10,7 @@ const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
+  const { pagePath } = routeInfo(location.pathname);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -76,32 +77,34 @@ const Navbar: React.FC = () => {
         <div className={`collapse navbar-collapse ${isMenuOpen ? 'show' : ''}`} id="navbarNav">
           <ul className="navbar-nav">
             <li className="nav-item">
-              <NavLink
+              <Link
                 to={localizedPath('/', language)}
-                className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
-                end
+                className={`nav-link ${pagePath === '/' ? 'active' : ''}`}
+                aria-current={pagePath === '/' ? 'page' : undefined}
                 onClick={() => setIsMenuOpen(false)}
               >
                 <span className="nav-link-text">{t("Hakkımda")}</span>
-              </NavLink>
+              </Link>
             </li>
             <li className="nav-item">
-              <NavLink
+              <Link
                 to={localizedPath('/projects', language)}
-                className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
+                className={`nav-link ${pagePath === '/projects/' ? 'active' : ''}`}
+                aria-current={pagePath === '/projects/' ? 'page' : undefined}
                 onClick={() => setIsMenuOpen(false)}
               >
                 <span className="nav-link-text">{t("Projelerim")}</span>
-              </NavLink>
+              </Link>
             </li>
             <li className="nav-item">
-              <NavLink
+              <Link
                 to={localizedPath('/resume', language)}
-                className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
+                className={`nav-link ${pagePath === '/resume/' ? 'active' : ''}`}
+                aria-current={pagePath === '/resume/' ? 'page' : undefined}
                 onClick={() => setIsMenuOpen(false)}
               >
                 <span className="nav-link-text">{t("CV")}</span>
-              </NavLink>
+              </Link>
             </li>
           </ul>
         </div>

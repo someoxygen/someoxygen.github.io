@@ -15,6 +15,7 @@ export function structuredData(pathname: string) {
     {
       '@type': 'Person', '@id': personId, name: 'Mustafa Yücel', url: `${SITE_URL}/`,
       jobTitle: 'Senior Full Stack Engineer',
+      alternateName: 'Mustafa Yucel',
       sameAs: ['https://github.com/someoxygen', 'https://www.linkedin.com/in/mstfycl/'],
       knowsAbout: ['.NET', 'Node.js', 'React', 'Angular', 'Flutter', 'Microservices', 'TypeScript'],
     },
