@@ -142,3 +142,9 @@ Yeni sayfa eklerken `App.tsx` sayfa eşlemesini ve `config.ts` içindeki `pagePa
 Yayın sonrası `/projects/`, `/resume/` ve İngilizce karşılıklarının HTTP 200; olmayan bir adresin HTTP 404 verdiğini doğrulayın. DNS ve GitHub Pages tarafında HTTPS zorlamasını ve alternatif alan adının ana alan adına yönlendirilmesini kontrol edin; HTTP yönlendirmeleri React kodundan ayarlanamaz.
 
 Google Search Console’da `mustafayucel.com` alan adı mülkünü DNS ile doğrulayın ve `https://mustafayucel.com/sitemap.xml` adresini gönderin. URL Denetimi ile her dilde bir sayfayı kontrol edin. İndeksleme, sıralama, Core Web Vitals ve zengin sonuçlar yayın sonrasında gerçek verilerle izlenmelidir.
+
+### `index.html` için noindex raporu
+
+GitHub Pages `/index.html` ve diğer sayfaların `index.html` adreslerini de sunar. React bu adresleri dizin adresleriyle aynı sayfa olarak tanır; hydration sonrasında `noindex` eklemez. Canonical ve sitemap adresleri `/`, `/projects/` gibi dizin adresleri olarak kalır. Bilinmeyen adreslerde ve 404 sayfasında `noindex` korunur.
+
+Yayın sonrası Search Console'da raporlanan `https://www.mustafayucel.com/index.html` adresini URL Denetimi > Canlı URL'yi test et ile kontrol edin. `www` adresi ana alan adına yönlenir; `/index.html` sayfasının canonical adresi `https://mustafayucel.com/` olur. İndekse eklenmesini isteyeceğiniz esas adres ana sayfadır. Eski URL'nin yönlendirme veya alternatif sayfa olarak raporlanması normaldir; her URL varyantının ayrı indekslenmesi hedeflenmez. Canlı test başarılı olduğunda noindex raporunda Düzeltmeyi doğrula işlemini başlatın.

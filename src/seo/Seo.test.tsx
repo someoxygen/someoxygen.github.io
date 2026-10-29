@@ -53,6 +53,34 @@ test('unknown routes are noindex and can navigate back to indexable content', ()
   expect(document.querySelector('link[rel="canonical"]')).toHaveAttribute('href', 'https://mustafayucel.com/');
 });
 
+test.each(['/', '/projects/', '/resume/', '/en/', '/en/projects/', '/en/resume/'])(
+  'keeps the index.html alias of %s indexable after hydration', async pathname => {
+    const { renderToString } = require('react-dom/server.node');
+    const alias = `${pathname}index.html`;
+    expect(getSeo(alias)).toEqual(getSeo(pathname));
+    const consoleError = jest.spyOn(console, 'error').mockImplementation(() => {});
+    window.history.replaceState({}, '', alias);
+    const container = document.createElement('div');
+    document.body.appendChild(container);
+    container.innerHTML = renderToString(<MemoryRouter initialEntries={[pathname]}><SiteApp /></MemoryRouter>);
+    const onRecoverableError = jest.fn();
+    let root: ReturnType<typeof hydrateRoot>;
+    await act(async () => { root = hydrateRoot(container, <App />, { onRecoverableError }); });
+    expect(onRecoverableError).not.toHaveBeenCalled();
+    expect(consoleError).not.toHaveBeenCalled();
+    consoleError.mockRestore();
+    expect(container.querySelector('h1')).not.toHaveTextContent(/Sayfa bulunamadı|Page not found/);
+    expect(document.querySelector('meta[name="robots"]')).toHaveAttribute('content', 'index, follow, max-image-preview:large');
+    expect(document.querySelector('link[rel="canonical"]')).toHaveAttribute('href', `https://mustafayucel.com${pathname}`);
+    await act(async () => root.unmount());
+    container.remove();
+  },
+);
+
+test('unknown index files remain excluded', () => {
+  expect(getSeo('/missing/index.html').robots).toBe('noindex, follow');
+});
+
 test('normalizes slash variants and provides localized project schema', () => {
   expect(getSeo('/en/projects').canonical).toBe(getSeo('/en/projects/').canonical);
   expect(getSeo('/en').canonical).toBe('https://mustafayucel.com/en/');

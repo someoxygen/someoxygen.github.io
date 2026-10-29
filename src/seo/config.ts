@@ -3,7 +3,9 @@ export const SITE_URL = 'https://mustafayucel.com';
 export const pagePaths = ['/', '/projects/', '/resume/'] as const;
 
 export function routeInfo(pathname: string) {
-  const path = pathname.replace(/\/+$/, '') || '/';
+  // GitHub Pages serves directory index files at both URL forms.
+  // Keep their client-rendered content and indexing rules identical.
+  const path = pathname.replace(/\/index\.html$/, '/').replace(/\/+$/, '') || '/';
   const language: Language = path === '/en' || path.startsWith('/en/') ? 'en' : 'tr';
   const base = language === 'en' ? path.slice(3) || '/' : path;
   const pagePath = base === '/' ? '/' : `${base}/`;
