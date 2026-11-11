@@ -15,7 +15,7 @@ export const getProjects = (t: Translator): Project[] => [
     title: 'Rota',
     description:
       t("Vue 3 ve ASP.NET Core ile geliştirilen görev yönetimi uygulaması. Kullanıcılar hesap oluşturabilir, giriş yapabilir ve görevleri tek bir ekran üzerinden yönetebilir."),
-    technologies: ['Vue 3', 'TypeScript', 'Vite', 'Axios', 'ASP.NET Core', 'Entity Framework Core', 'PostgreSQL'],
+    technologies: ['Vue 3', 'TypeScript', 'Vite', '.NET Core', 'EF Core', 'PostgreSQL'],
     link: 'https://github.com/someoxygen/TodoApp',
     demoLink: 'https://todoapp-frontend-3irt.onrender.com',
     category: 'Full-Stack'
