@@ -12,21 +12,21 @@ interface Project {
 
 export const getProjects = (t: Translator): Project[] => [
   {
-    title: 'Todo App',
+    title: 'Rota',
     description:
-      t("Modern görev yönetimi uygulaması. React ve TypeScript ile geliştirilmiş kullanıcı dostu to-do list platformu."),
-    technologies: ['React', 'TypeScript', 'CSS'],
+      t("Vue 3 ve ASP.NET Core ile geliştirilen görev yönetimi uygulaması. Kullanıcılar hesap oluşturabilir, giriş yapabilir ve görevleri tek bir ekran üzerinden yönetebilir."),
+    technologies: ['Vue 3', 'TypeScript', 'Vite', 'Axios', 'ASP.NET Core', 'Entity Framework Core', 'PostgreSQL'],
     link: 'https://github.com/someoxygen/TodoApp',
     demoLink: 'https://todoapp-frontend-3irt.onrender.com',
-    category: 'Frontend'
+    category: 'Full-Stack'
   },
   {
     title: 'Toolboxery',
     description:
       t("Modern araç kutusu uygulaması. Geliştiriciler için çevrimiçi geliştirme araçları ve iş akış süreçleri."),
-    technologies: ['React', 'TypeScript', 'Node.js'],
+    technologies: ['React', 'TypeScript', 'Node.js','Supabase'],
     demoLink: 'https://toolboxery.com',
-    category: 'Frontend'
+    category: 'Full-Stack'
   },
   {
     title: 'Product Store App',
