@@ -12,6 +12,23 @@ interface Project {
 
 export const getProjects = (t: Translator): Project[] => [
   {
+    title: 'Todo App',
+    description:
+      t("Modern görev yönetimi uygulaması. React ve TypeScript ile geliştirilmiş kullanıcı dostu to-do list platformu."),
+    technologies: ['React', 'TypeScript', 'CSS'],
+    link: 'https://github.com/someoxygen/TodoApp',
+    demoLink: 'https://todoapp-frontend-3irt.onrender.com',
+    category: 'Frontend'
+  },
+  {
+    title: 'Toolboxery',
+    description:
+      t("Modern araç kutusu uygulaması. Geliştiriciler için çevrimiçi geliştirme araçları ve iş akış süreçleri."),
+    technologies: ['React', 'TypeScript', 'Node.js'],
+    demoLink: 'https://toolboxery.com',
+    category: 'Frontend'
+  },
+  {
     title: 'Product Store App',
     description:
       t("Modern ürün mağazası uygulaması. JavaScript ile geliştirilmiş kullanıcı dostu e-ticaret platformu."),
